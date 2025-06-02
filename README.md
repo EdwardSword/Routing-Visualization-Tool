@@ -1,6 +1,3 @@
-# Routing-Visualization-Tool
-Dijkstra &amp; Bellman-Ford Routing Visualization Educational Tool
-
 ## 🛰️ Routing Visualizer Tool
 
 A dynamic, interactive web-based visualizer for understanding how computer networks compute optimal paths using **Dijkstra’s Algorithm** and the **Bellman-Ford Algorithm**.
