@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Routing Visualizer</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Electrolize">
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.23.0/cytoscape.min.js" integrity="sha512-gEWKnYYa1/1c3jOuT9PR7NxiVI1bwn02DeJGsl+lMVQ1fWMNvtjkjxIApTdbJ/wcDjQmbf+McWahXwipdC9bGA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="graph.js"></script>
+    <script src="Dijkstras.js"></script>
+    <script src="BellmanFord.js"></script>
+    <script src="tableView.js"></script>
+</head>
+
+<body>
+    <h1>Routing Visualizer</h1>
+
+    <div id="container">
+        <form>
+            <h2>Build Network</h2>
+            
+            <fieldset>
+                <legend>New Device</legend>
+                
+                <label for="node">Device:</label>
+                <input type="text" id="node"><br>
+                
+                <button type="button" class="locked-button" onclick="renderNode()">Add Device</button><br>
+            </fieldset>
+
+            <fieldset>
+                <legend>New Link</legend>
+
+                <label for="node_x">Device 1:</label>
+                <input type="text" id="node_x">
+                <label for="node_y">Device 2:</label>
+                <input type="text" id="node_y"><br>
+                <label for="weight">Distance:</label>
+                <input type="number" id="weight"><br>
+
+                <button type="button" class="locked-button" onclick="renderEdge()">Add Link</button>
+            </fieldset>
+
+            <h2>Generate Route</h2>
+            
+            <fieldset>
+                <legend>Find Route</legend>
+
+                <label for="start">Source Device:</label>
+                <input type="text" id="start"><br>
+                <label for="end">Destination Device:</label>
+                <input type="text" id="end"><br>
+
+                <button type="button" class="locked-button" onclick="pathDijkstras()">Dijkstra's Algorithm</button>
+                <button type="button" class="locked-button" onclick="pathBellman()">Bellman-Ford Algorithm</button><br>
+                
+                <button type="button" id="step" disabled>Step</button>
+                <button type="button" id="skip" disabled>Skip</button>
+            </fieldset>
+        </form>
+
+        <div id="canvas-container">
+            <button type="button" class="locked-button" onclick="buildSample()">Sample Network</button>
+            <button type="button" class="locked-button negative-button" onclick="clearGraph()">Delete Network</button>
+            <div id="canvas"></div>
+        </div>
+    </div>
+
+    <div id="table-view"></div>
+</body>
+
+<script src="renderer.js"></script>
+
+</html>
